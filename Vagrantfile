@@ -11,6 +11,8 @@ Vagrant.configure("2") do |config|
   config.vm.network "forwarded_port", guest: 5432, host: 5432
   # node
   config.vm.network "forwarded_port", guest: 4444, host: 4444
+  # adminer
+  config.vm.network "forwarded_port", guest: 8080, host: 8080
 
   config.vm.synced_folder "~/Developer", "/home/vagrant/projects"
 
@@ -31,8 +33,8 @@ Vagrant.configure("2") do |config|
     # sudo apt-get -y upgrade
   SHELL
 
-  config.vm.provision :shell, :path => "provision/git.sh"
-  config.vm.provision :shell, :path => "provision/yarn.sh"
+  # config.vm.provision :shell, :path => "provision/git.sh"
+  # config.vm.provision :shell, :path => "provision/yarn.sh"
   config.vm.provision :shell, :path => "provision/python.sh"
 
 end
